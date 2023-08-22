@@ -30,15 +30,17 @@
         <h1>Daily Phrases</h1>
         <h3>brought by Bruno Fernandes</h3>
         <br>
-        <table style="width:100%;overflow: visible">
-          <colgroup>
-            <col span="1" style="width: 15%;">
-            <col span="1" style="width: 85%;">
-          </colgroup>
-          <tbody>
-            {qlist}<tr><td>{date}</td><td style="text-align: center"><span style="font-size:120%">{phrase}</span><br><span style="font-size:80%">{author}</span></td></tr>
-          </tbody>
-        </table>
+        <div style="height:50vh;overflow: scroll;">
+          <table style="width:100%">
+            <colgroup>
+              <col span="1" style="width: 15%;">
+              <col span="1" style="width: 85%;">
+            </colgroup>
+            <tbody>
+              {qlist}<tr><td>{date}</td><td style="text-align: center"><span style="font-size:120%">{phrase}</span><br><span style="font-size:80%">{author}</span></td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
     </div>
