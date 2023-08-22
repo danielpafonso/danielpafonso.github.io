@@ -84,6 +84,6 @@ if __name__ == "__main__":
     quotes = read_qoutes_file(filepath)
 
     # generate static page from templates
-    # generate_index(quotes, template_folder, static_folder)
+    generate_index(quotes, template_folder, static_folder)
     generate_list(quotes, template_folder, static_folder)
     # generate_duplicates(quotes, template_folder, static_folder)
