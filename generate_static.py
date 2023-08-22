@@ -78,7 +78,7 @@ def generate_list(data, input_folder, output_folder, filename="list.html"):
 if __name__ == "__main__":
     filepath = "quotes.dsv"
     template_folder = "templates"
-    static_folder = "page"
+    static_folder = "."
     
     # read qoute file
     quotes = read_qoutes_file(filepath)
