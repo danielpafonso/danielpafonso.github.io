@@ -28,7 +28,8 @@ def generate_index(data:list, input_folder, output_folder, filename="index.html"
             author = x[2]
             break
     # replace values
-    template = template.replace("{{Phrase}}", phrase).replace("{{Author}}", author)
+    # template = template.replace("{{Phrase}}", phrase).replace("{{Author}}", author)
+    template = template.format(phrase=phrase, author=author)
 
     # write static
     static_file = path.join(output_folder, filename)
@@ -41,9 +42,7 @@ def generate_list(data, input_folder, output_folder, filename="list.html"):
     template_file = path.join(input_folder, f"template_{filename}")
     with open(template_file, "r", encoding="utf8") as ifp:
         template = ifp.read().split("\n")
-    
-    # replace values
-    # template = template.replace("{{Phrase}}", phrase).replace("{{Author}}", author)
+
     # get row template
     list_idx = 0
     row_template = ""
@@ -54,16 +53,10 @@ def generate_list(data, input_folder, output_folder, filename="list.html"):
             break
     
     # get qoute rows
-    rows = []
-    # rows = [
-    #     str(row_template).format(qlist="", date=qoute[0], phrase=qoute[1], author=qoute[2]) 
-    #     for qoute in data
-    #     ]
-    # {list}<tr><td>{date}</td><td style="text-align: center"><span style="font-size:150%">{phrase}</span><br>{author}</td></tr>
-    for qoute in data:
-        rows.append(
-            str(row_template).format(qlist="", date=qoute[0], phrase=qoute[1], author=qoute[2])
-        )
+    rows = [
+        str(row_template).format(qlist="", date=qoute[0], phrase=qoute[1], author=qoute[2])
+        for qoute in data
+        ]
     # replace values
     template[list_idx] = "\n".join(rows)
 
