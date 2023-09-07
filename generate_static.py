@@ -84,7 +84,4 @@ if __name__ == "__main__":
     # generate static page from templates
     generate_index(quotes, template_folder, static_folder)
     generate_list(quotes, template_folder, static_folder)
-    ## dummy duplicate html
-    filename = "duplicates.html"
-    shutil.copyfile(filename, os.path.join(static_folder, filename))
     # generate_duplicates(quotes, template_folder, static_folder)
