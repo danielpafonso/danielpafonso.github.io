@@ -14,15 +14,6 @@ def read_qoutes_file(filename):
     qoutes.sort(key=lambda x: x[0])
     return qoutes
 
-def prep_static_folder(folder, imgs_folder="img"):
-    """ create static folder and copy the images to it """
-    # create folder
-    print("Creating static folder")
-    os.makedirs(folder, exist_ok=True)
-    # copy images
-    print("Copying images to static folder")
-    shutil.copytree(imgs_folder, os.path.join(folder, imgs_folder))
-
 def generate_index(data:list, input_folder, output_folder, filename="index.html"):
     """ Generate static page for today qoute """
     print("Generating index page")
@@ -89,9 +80,6 @@ if __name__ == "__main__":
     
     # read qoute file
     quotes = read_qoutes_file(filepath)
-
-    # prep output folder
-    prep_static_folder(static_folder)
 
     # generate static page from templates
     generate_index(quotes, template_folder, static_folder)
