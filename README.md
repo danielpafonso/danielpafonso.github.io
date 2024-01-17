@@ -18,5 +18,5 @@ This repo is also to test the workflow on build and deploy a Github Page.
 | profession | string     | no       |
 
 ```
-date|quote|author - birth_year - death_year, profession
+date|quote|author - birth_year-death_year, profession
 ```
