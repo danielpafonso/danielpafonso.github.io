@@ -12,6 +12,7 @@ var (
 	quoteFile      string = "quotes.dsv"
 	templateFolder string = "templates"
 	indexTemplate  string = path.Join(templateFolder, "index.tmpl")
+	listTemplate   string = path.Join(templateFolder, "list.tmpl")
 	outputFolder   string = "public"
 )
 
@@ -35,6 +36,7 @@ func readCSV() ([]Quote, error) {
 	//process qoutes, skiping header row
 	for _, record := range records[1:] {
 		fields := strings.Split(record, "|")
+		// join author and birth/death for pretty print
 		quotes = append(quotes, Quote{
 			Date:       fields[0],
 			Quote:      fields[1],
@@ -67,5 +69,16 @@ func main() {
 		panic(err)
 	}
 
-	// log.Println("Creating list.html")
+	log.Println("Creating list.html")
+	listTmpl := template.Must(template.ParseFiles(listTemplate))
+	// list output file
+	listHtml, err := os.Create(path.Join(outputFolder, "list.html"))
+	if err != nil {
+		panic(err)
+	}
+	// execute template
+	err = listTmpl.Execute(listHtml, records)
+	if err != nil {
+		panic(err)
+	}
 }
