@@ -6,17 +6,16 @@ Access page by using the link: [danielpafonso.github.io](https://danielpafonso.g
 
 This repo is also to test the workflow on build and deploy a Github Page.
 
-## Quote formation
+## Quote file format
 
-| Field      | Format     | Required |
-| ---------- | ---------- | -------- |
-| date       | YYYY-MM-DD | yes      |
-| quote      | string     | yes      |
-| author     | string     | yes      |
-| birth year | integer    | yes      |
-| death year | integer    | no       |
-| profession | string     | no       |
+The Quotes file is a `|` seperated file (dsv) with the following fields:
 
-```
-date|quote|author - birth_year-death_year, profession
-```
+| Field             | Description                    |
+| ----------------- | ------------------------------ |
+| date              | Publish date                   |
+| quote             | Quote itself                   |
+| author            | Quote's Author                 |
+| birth-death       | Author's birth and death years |
+| profession        | Author's Profession            |
+
+Only the date files have a required format, `YYYY-MM-DD` that is used to calculate the quote of the day. This enables the preentive addition of quotes to the files and only will be added on that day.

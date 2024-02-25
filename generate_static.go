@@ -6,6 +6,7 @@ import (
 	"os"
 	"path"
 	"strings"
+	"time"
 )
 
 var (
@@ -26,16 +27,28 @@ type Quote struct {
 
 // readCSV is a custom csv reader function because the default can't ignore " if they are the first character
 func readCSV() ([]Quote, error) {
+	today := time.Now().UTC()
 	quotes := make([]Quote, 0)
 	// open file
 	data, err := os.ReadFile(quoteFile)
 	if err != nil {
 		return nil, err
 	}
-	records := strings.Split(string(data), "\n")
+	records := strings.Split(
+		strings.TrimSpace(string(data)),
+		"\n",
+	)
 	//process qoutes, skiping header row
 	for _, record := range records[1:] {
 		fields := strings.Split(record, "|")
+		// check if is future quote
+		quoteDay, err := time.Parse("2006-01-02", fields[0])
+		if err != nil {
+			return nil, err
+		}
+		if quoteDay.After(today) {
+			continue
+		}
 		// join author and birth/death for pretty print
 		quotes = append(quotes, Quote{
 			Date:       fields[0],

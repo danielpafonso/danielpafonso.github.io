@@ -7,7 +7,7 @@ full: clean build
 
 build:
 	mkdir -p $(OUTPUT_FOLDER)
-	go run main.go
+	go run generate_static.go
 	cp -r $(STATIC_FOLDER)/* $(OUTPUT_FOLDER)
 
 clean:
