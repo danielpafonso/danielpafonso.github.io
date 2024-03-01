@@ -8,11 +8,9 @@
 </head>
 
 <body>
-
-  <div id=grad>
-
+  <div class="grad">
     <div class="hamburger-menu">
-      <input id="menu__toggle" type="checkbox" />
+      <input class="offscreen" id="menu__toggle" type="checkbox" />
       <label class="menu__btn" for="menu__toggle">
         <span></span>
       </label>
@@ -20,12 +18,11 @@
       <ul class="menu__box">
         <li><a class="menu__item" href="index.html">Home</a></li>
         <li><a class="menu__item" href="list.html">List All</a></li>
-        <li><a class="menu__item" href="duplicates.html">Duplicates</a></li>
+        <!-- <li><a class="menu__item" href="duplicates.html">Duplicates</a></li> -->
       </ul>
     </div>
 
-
-    <div id=wrap>
+    <div class="card">
       <div style="overflow-y: scroll;">
         <h1>Memories</h1>
         <h3>brought by Bruno Fernandes</h3>
@@ -37,7 +34,13 @@
               <col span="1" style="width: 85%;">
             </colgroup>
             <tbody>
-              {qlist}<tr><td>{date}</td><td style="text-align: center"><span style="font-size:120%">{phrase}</span><br><span style="font-size:80%">{author}</span></td></tr>
+              {{- range . }}
+              <tr><td>{{ .Date }}</td><td style="text-align: center"><span style="font-size:120%">{{ .Quote }}</span><br><span style="font-size:80%">
+                {{- or .Author "Unknown Author" -}}
+                {{ if .BirthDeath }} - {{ .BirthDeath }}{{ end -}}
+                {{ if .Profession }}, {{ .Profession }}{{ end -}}
+              </span></td></tr>
+              {{- end }}
             </tbody>
           </table>
         </div>
