@@ -12,8 +12,8 @@ import (
 var (
 	quoteFile      string = "quotes.dsv"
 	templateFolder string = "templates"
-	indexTemplate  string = path.Join(templateFolder, "index.tmpl")
-	listTemplate   string = path.Join(templateFolder, "list.tmpl")
+	indexTemplate  string = path.Join(templateFolder, "index.html.tmpl")
+	listTemplate   string = path.Join(templateFolder, "list.html.tmpl")
 	outputFolder   string = "public"
 )
 
