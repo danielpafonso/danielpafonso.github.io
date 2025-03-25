@@ -34,21 +34,13 @@
             <col span="1" style="width: 15%;">
           </colgroup>
           <tbody>
+            {{- range . }}
             <tr>
-              <td style="text-align: center"><span style="font-size:120%">We are what we repeatedly do. Excellence, then, is not an act, but a habit.</span><br><span
-                  style="font-size:80%">Aristotle</span></td>
-              <td><ul><li>2022-11-14</a></li><li>2023-01-10</a></li></ul></td>
+              <td style="text-align: center"><span style="font-size:120%">{{ .Quote }}</span><br><span
+                  style="font-size:80%">{{ .Author }}</span></td>
+              <td><ul>{{ range .Dates }}<li>{{ . }}</a></li>{{- end }}</ul></td>
             </tr>
-            <tr>
-              <td style="text-align: center"><span style="font-size:120%">It's Friday morning making! Good vibe, don't frown, and let the monster see you smile!</span><br><span
-                  style="font-size:80%">Napz Cherub Pellazo</span></td>
-              <td><ul><li>2022-11-18</a></li><li>2023-06-16</a></li></ul></td>
-            </tr>
-            <tr>
-              <td style="text-align: center"><span style="font-size:120%">Coming together is a beginning. Keeping Together is progress.</span><br><span
-                  style="font-size:80%">Henry Ford</span></td>
-              <td><ul><li>2022-12-03</a></li><li>2023-07-17</a></li></ul></td>
-            </tr>
+            {{- end }}
           </tbody>
         </table>
       </div>
@@ -57,3 +49,4 @@
 </body>
 
 </html>
+
