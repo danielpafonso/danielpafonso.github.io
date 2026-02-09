@@ -2,51 +2,47 @@
 <html>
 
 <head>
-  <link rel="icon" type="image/png" href="img/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="img/favicon.ico">
   <link rel="stylesheet" href="mystyle.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Daily Thoughts</title>
 </head>
 
-<body>
-  <div class="full-screen-background">
-    <div class="grad">
+<body class="list-page">
+  <input type="checkbox" id="menu-toggle" class="menu-toggle">
+  <label for="menu-toggle" class="hamburger-menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
 
-      <div class="hamburger-menu">
-        <input id="menu__toggle" type="checkbox" />
-        <label class="menu__btn" for="menu__toggle">
-          <span></span>
-        </label>
+  <nav class="sidebar">
+    <a href="index.html">Home</a>
+    <a href="list.html">List All</a>
+    <a href="duplicates.html" class="active">Duplicates</a>
+  </nav>
 
-        <ul class="menu__box">
-          <li><a class="menu__item" href="index.html">Home</a></li>
-          <li><a class="menu__item" href="list.html">List All</a></li>
-          <li><a class="menu__item" href="duplicates.html">Duplicates</a></li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h1>Brain on Repeat</h1>
+  <div class="quote-container">
+    <div class="quote-card list-card">
+        <h1>Brain on repeat</h1>
         <h3>brought by Bruno Fernandes</h3>
-        <br>
-        <table style="width:100%;overflow: visible">
-          <colgroup>
-            <col span="1" style="width: 85%;">
-            <col span="1" style="width: 15%;">
-          </colgroup>
-          <tbody>
-            {{- range . }}
-            <tr>
-              <td style="text-align: center"><span style="font-size:120%">{{ .Quote }}</span><br><span
-                  style="font-size:80%">{{ .Author }}</span></td>
-              <td><ul>{{ range .Dates }}<li>{{ . }}</a></li>{{- end }}</ul></td>
-            </tr>
-            {{- end }}
-          </tbody>
-        </table>
-      </div>
+        <div class="spacer"></div>
+        <div class="table-container">
+          <table class="quotes-table duplicates-table">
+            <tbody>
+              {{- range . }}
+              <tr>
+                <td class="quote-column">{{ .Quote }}<br><span class="author">{{ .Author }}</span></td>
+                <td class="date-list-column">
+                  <ul>{{ range .Dates }}<li>{{ . }}</a></li>{{- end }}</ul>
+                </td>
+              </tr>
+              {{- end }}
+            </tbody>
+          </table>
+        </div>
     </div>
   </div>
 </body>
 
 </html>
-
